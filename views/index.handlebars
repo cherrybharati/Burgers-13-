@@ -1,0 +1,43 @@
+<hi>{{title}}</hi>
+
+<form action="/newburger" method="post">
+<input type="text" name="name" >
+<input type="submit" value="Order">
+</form>
+
+<h3>Eaten</h3>
+    {{#each burgers}}
+    {{#if eaten}}
+    <div>
+        {{name}}
+        
+        <form action="/order" method="GET">
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="submit" value="Order">
+        </form>
+        
+        
+    </div>
+    {{/if}}
+    {{/each}}
+
+
+<h3>Available</h3>
+    {{#each burgers}}
+    {{#unless eaten}}
+    <div>
+        {{name}}
+        
+        <form action="/eat" method="GET">
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="submit" value="Eat">
+        </form>
+        <form action="/delete" method="GET">
+            <input type="hidden" name="id" value="{{id}}">
+            <input type="submit" value="Eat">
+        </form>
+        
+        
+    </div>
+    {{/unless}}
+    {{/each}}
